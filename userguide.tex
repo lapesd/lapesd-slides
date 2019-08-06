@@ -1,0 +1,411 @@
+% Ao menos uma linguagem (brazil ou english) deveria sempre ser fornecida
+\documentclass[brazil]{lapesd-slides}
+
+\usepackage{pgfgantt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Metadados
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title[LAPESD beamer user guide]{Beamer template for LAPESD}
+\subtitle{An User Guide}
+\author[Dr. Trovato]{\large Ben Trovato \\{\small \texttt{ben.trovato@posgrad.ufsc.br}}}
+
+\institute{
+  \fontsize{10.5}{12.6}\selectfont 
+  Programa de Pós-Graduação em Ciência da Computação\\ 
+  Depto. de Informática e Estatísitca\\
+  Universidade Federal de Santa Catarina - Florianópolis\\
+  \vspace{1em}
+  \large Orientador: Prof. Lars Thørväld
+}
+
+\date{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Slides
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\titleframe
+
+% Você não é obrigado a colocar um sumário!
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+% Desse ponto em diante serão inseridos slides de pausa a cada \section
+\showsections
+\section{Introdução}
+
+\begin{frame}[fragile]{Origem e Uso}
+  \begin{itemize}
+  \item Esse template funciona como uma classe \LaTeX
+    \begin{itemize}
+    \item O .cls é standalone: \textbf{não depende} de arquivos externos
+    \item Obtenha atualizações no \href{https://github.com/lapesd/lapesd-slides/}{GitHub}
+    \item \href{http://fixme.org/todo}{Template no Overleaf} 
+      \begin{itemize}
+      \item Cuidado: pode não estar com o último .cls
+      \end{itemize}
+    \end{itemize}
+  \item Atualização do feito pelo Eduardo Camilo Inácio
+    \begin{itemize}
+    \item Novidades: Re-empacotamento, bugfixes e comandos novos
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+% +========================================================================+
+% |O =singlieslide só é necessário pois há um \end{frame} dentro do minted.|
+% |Normalmente, um fragile simples é suficiente (e mais recomendável)      |
+% +========================================================================+
+%                    |
+%                    v
+\begin{frame}[fragile=singleslide]{Esqueleto}
+\begin{minted}{latex}
+\documentclass[brazil]{lapesd-slides}
+\title{Beamer template for LAPESD}
+\subtitle{An user guide}
+\author{\large Ben Trovato}
+\institute{}
+\date{\today}
+
+\begin{document}
+  % .... slides ....
+  
+  \thanksframe
+  \referencesframe{main}
+  
+  \begin{backup}
+    % slides ...
+  \end{backup}
+\end{document}
+\end{minted}  
+\end{frame}
+
+\begin{frame}[fragile]{Pacotes incluídos}
+  \tiny
+  \begin{itemize}
+  \item \mla[fontsize=\tiny]|\usepackage[utf8]{inputenc}|
+  \item \mla[fontsize=\tiny]|\usepackage[T1]{fontenc}|
+  \item \mla[fontsize=\tiny]|\usepackage{lipsum}|
+  \item \mla[fontsize=\tiny]|\usepackage{xcolor}|
+  \item \mla[fontsize=\tiny]|\usepackage{booktabs}|
+  \item \mla[fontsize=\tiny]|\usepackage{array}|
+  \item \mla[fontsize=\tiny]|\usepackage{multirow}|
+  \item \mla[fontsize=\tiny]|\usepackage{adjustbox}|
+  \item \mla[fontsize=\tiny]|\usepackage[absolute,overlay]{textpos}|
+  \item \mla[fontsize=\tiny]|\usepackage{hyperref}|
+  \item \mla[fontsize=\tiny]|\usepackage{algorithmicx}|
+  \item \mla[fontsize=\tiny]|\usepackage[noend]{algpseudocode}|
+  \item \mla[fontsize=\tiny]|\usepackage{todonotes}|
+  \item \mla[fontsize=\tiny]|\usepackage{soulutf8}|
+  \item \mla[fontsize=\tiny]|\usepackage{babel}|
+  \item \mla[fontsize=\tiny]|\usepackage{abntex2cite}| ou \mla[fontsize=\tiny]|\usepackage{natbib}| ou nenhum
+  \item \mla[fontsize=\tiny]|\usepackage{pifont}|
+  \item \mla[fontsize=\tiny]|\usepackage{minted}|
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Makefile}
+  \begin{itemize}
+  \item Esse repositório inclui um Makefile
+    \begin{itemize}
+    \item O uso não é obrigatório
+    \item Você pode compilar os slides normalmente com \texttt{pdflatex -shell-escape}
+    \end{itemize}
+  \item O Makefile converte SVGs dentro de \texttt{imgs/} em PDFs
+  \item Veja o slide de exemplo intitulado animação
+    \begin{itemize}
+    \item Nesse caso o Makefile possui uma lista de frames a serem extraídos como PDFS de um SVG.
+    \end{itemize}
+  \end{itemize}
+  
+  
+\end{frame}
+
+\section{Opções da classe}
+
+\begin{frame}{Linguagens}
+  \begin{itemize}
+  \item Suporte a idiomas via \texttt{babel}
+  \item Passe o idioma (\texttt{brazil} ou \texttt{english}) como opção da classe \texttt{lapesd-slides}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{\texttt{disabletodonotes}}
+  \begin{itemize}
+  \item O pacote \texttt{todonotes} fornece balõezinhos  de TODO's
+  \item A opção \texttt{disabletodonotes} faz com que eles não sejam renderizados
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Slides de backup}
+\begin{minted}{latex}
+\begin{backup}
+  \pholder{Gráfico que não coube no tempo}
+  \pholder{Lamentações sobre um detalhe técnico qualquer}
+\end{backup}
+\end{minted}
+  \begin{itemize}
+  \item Opção \texttt{showbackup} faz com que o conteúdo do ambiente seja renderizado
+  \item Opção \texttt{hidebackup} impede renderização do conteúdo do ambiente
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Citações}
+  \begin{itemize}
+  \item Três opções:
+    \begin{itemize}
+    \item \texttt{abntexcite}: Carrega e configura o \texttt{abntex2cite}
+    \item \texttt{natbib}: Carrega e configura o \texttt{natbib}
+    \item \texttt{nobib}: Não carrega nada
+    \end{itemize}
+  \item Macros \mla|\cite|, \mla|\citet|, \mla|\citep| e \mla|\citeonline| sempre estarão disponíveis, não importa se for escolhido \texttt{abntex2cite} ou \texttt{natbib}
+  \end{itemize}
+\end{frame}
+
+
+\section{Novos comandos e Ambientes}
+
+\begin{frame}[fragile,fragile]{\texttt{\textbackslash{}titleframe}}
+  \begin{center}
+    \mla|\titleframe|
+  \end{center}
+  \begin{itemize}
+  \item Gera o slide de título
+  \item Não use dentro de um ambiente \texttt{frame}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{\texttt{\textbackslash{}showsections}}
+  \begin{center}
+    \mla|\showsections|
+  \end{center}
+  \begin{itemize}
+  \item Passa a gerar slides de ``pausa'' a cada \mla|\section|
+  \item Os slides contem apenas o título da seção, sem sidebar
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{\texttt{\textbackslash{}stopcountingframes}}
+  \begin{center}
+    \mla|stopcountingframes|
+  \end{center}
+  \begin{itemize}
+  \item A partir desse ponto slides deixam de ser contabilizados
+  \item O último slide será o slide n/n
+  \item O próximo slide será o slide $n+1$/n
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{\texttt{\textbackslash{}thanksframe}}
+  \begin{center}
+    \mla|\thanksframe[linha1][linha2]|
+  \end{center}
+  \begin{itemize}
+  \item Gera slide de agradecimento, usando o estilo do título
+    \begin{itemize}
+    \item Não use dentro do ambiente \texttt{frame}
+    \end{itemize}
+  \item Argumentos \emph{default}:
+    \begin{itemize}
+    \item \texttt{linha1}: Obrigado! / Thank You!
+    \item \texttt{linha2}: Perguntas? / Questions? 
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{\texttt{\textbackslash{}referencesframe}}
+  \begin{center}
+    \mla|\referencesframe{bibfiles}|
+  \end{center}
+  \begin{itemize}
+  \item Gera slides de referências
+    \begin{itemize}
+    \item Não use dentro do ambiente \texttt{frame}
+    \end{itemize}
+  \item Pode gerar mais de um slide
+  \item \texttt{bibfiles} é repassado para \mla|\bibliography|
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{\texttt{\textbackslash{}pholder}}
+  \begin{center}
+    \mla|\pholder[todonote]{titulo}|
+  \end{center}
+  \begin{itemize}
+  \item Gera um slide \emph{placeholder} com o título fornecido
+    \begin{itemize}
+    \item \texttt{todonote} texto do \mla|\todo[inline]{}| deixado no corpo do slide. O default é ``Fazer''
+    \end{itemize}
+  \item Útil para criar esqueletos de apresentação 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{\texttt{\textbackslash{}addfig}}
+  \begin{center}
+    \begin{minipage}{.9\linewidth}
+\begin{minted}[linenos=disable]{latex}
+\addfig[texto][opts_graphicx]{arquivo.ext}
+\addfiglw[texto]{arquivo.ext}
+\end{minted}
+    \end{minipage}
+  \end{center}
+  \begin{itemize}
+  \item Atalho para incluir figuras
+    \begin{itemize}
+    \item A figura ficará centralizada
+    \item Havera espaçamento de \texttt{.5em} (meia linha) antes e depois
+    \item Se \texttt{texto} for dado, será renderizado abaixo da figura, centralizado
+    \item \texttt{opts\_graphicx} é redirecionado para o \mt|\includegraphics|
+    \end{itemize}
+  \item \mt|addfiglw| tem o mesmo comportamento, mas usa \mt|width=\linewidth| como \texttt{opts\_graphicx}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{\texttt{\textbackslash{}\textbf{t}cite*}}
+  \begin{center}
+    \mla|\tcitet[]{}|, \mla|\tcitep[]{}|, \mla|\tcite[]{}| e \mla|\tciteonline[]{}|
+  \end{center}
+  \begin{itemize}
+  \item Equivalentes às suas contrapartes sem o \textbf{\texttt{t}}
+  \item Não são definios se o \mla|\cite| correspondente não existir
+  \item Ao usar a opção de classe abntexcite, \mla|\citep| e \mla|\citet| são definidos a partir de \mla|\cite| e \mla|\citeonline|
+  \item Ao usar a opção de classe natbib, \mla|\citeonline| é definido a partir de \mla|\citet|
+  \end{itemize}
+\end{frame}
+
+
+\section{Exemplos}
+
+% Atalho para criar esqueletos dos slides
+\pholder[Slide criado com \mt|\pholder|]{Slide placeholder}
+
+\begin{frame}{Citations}
+  \begin{itemize}
+  \item \mla|\cite|: \cite{dijkstra1968}
+  \item \mla|\citeonline|: \citeonline{dijkstra1968}
+  \item \mla|\tcitep|: \tcitep{dijkstra1968}
+  \item \mla|\tcitet|: \tcitet{dijkstra1968}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Pseudocódigo}
+  \begin{algorithmic}
+    \Procedure{Closure}{C, A}
+      \State{$H \gets \emptyset$}\Comment{Direct cache}
+      \For{$i \in [1, n]$}\Comment{Parallel, (dynamic,32) scheduling}
+        \State{$H \gets H \cup \Call{DoImportantStuff}{i}$}
+      \EndFor
+    \EndProcedure
+  \end{algorithmic}
+  \vspace{2em}
+  \begin{itemize}
+  \item Pense duas vezes antes de colocar algoritmos em slides
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Tabelas}
+  \begin{center}
+    \begin{tabular}{lccp{4cm}}
+      \toprule
+      Esquerda & Coluna 1    & \rotatebox{90}{90 graus}  & Parágrafo com \mla|p{4cm}|   \\
+      \midrule
+      $r_1$    & \cmk        &  \xmk                     & \circledi    \\
+      $r_2$    &     \multicolumn{2}{c}{merged cell}     & \circledii   \\
+      $r_3$    & \circlediii & \circlediv                & \circledv    \\
+      $r_4$    & \circledvi  & \circledvii               & \circledviii \\
+      $r_5$    & \circledix  &  x                        & y           \\
+      \bottomrule 
+    \end{tabular}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Animações com svg2pdf}
+  \begin{overprint}
+    \only<1>{\includegraphics{animation-1.pdf}}
+    \only<2>{\includegraphics{animation-2.pdf}}
+    \only<3>{\includegraphics{animation-3.pdf}}
+    \only<4>{\includegraphics{animation-4.pdf}}
+    \only<5>{\includegraphics{animation-5.pdf}}
+  \end{overprint}
+\end{frame}
+
+\begin{frame}{Instruções para animações com svg2pdf}
+
+  \begin{enumerate}
+  \item Crie um grupo no SVG para cada frame
+    \begin{itemize}
+    \item Garanta que todos os frames (grupos no SVG) tenham \emph{exatamente} as mesmas dimensões
+    \item Todos os frames (grupos) devem estar epilhados no eixo $y$, isto é deve existir uma reta paralela ao eixo $y$ que contenha todos os top-left dos bounding box de todos os grupos
+    \item Não devem haver elementos no SVG fora do bounding box definido pelo top-left de frame com maior valor de $y$ e o bottom-right de frame com o menor valor de $y$   \end{itemize}
+  \item Nomeie grupos no XML do SVG
+  \item No Makefile, adicione um \emph{target} e uma entrada na variável \texttt{frames} para cada grupo
+  \item Use o ambiente \texttt{overlayarea} ou \texttt{overprint} e liste os frames com  \mla|\only<n>{\includegraphics{frame-n.pdf}}|
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{pgfgantt}
+  \begin{adjustbox}{max height=.9\textheight,max width=\linewidth}
+    \begin{ganttchart}[vgrid,
+      y unit chart=.6cm,
+      title height=.6, title top shift=0,
+      % title label anchor={below=-1.5},
+      % bar top shift=-0.1, bar height=0.6
+      ]{1}{16}
+      \gantttitlelist{2018,...,2021}{4} \\
+      \gantttitle{1T}{1}\gantttitle{2T}{1}\gantttitle{3T}{1}\gantttitle{4T}{1} %2018
+      \gantttitle{1T}{1}\gantttitle{2T}{1}\gantttitle{3T}{1}\gantttitle{4T}{1} %2019
+      \gantttitle{1T}{1}\gantttitle{2T}{1}\gantttitle{3T}{1}\gantttitle{4T}{1} %2020
+      \gantttitle{1T}{1}\gantttitle{2T}{1}\gantttitle{3T}{1}\gantttitle{4T}{1} \\
+      
+      \ganttgroup{Courses}{1}{8} \\
+      
+      \ganttbar[name=mat1]{Materialization}{4}{5} 
+      \ganttbar[name=mat2]{Materialization}{7}{7} \\ 
+      \ganttbar[name=shacl]{SHACL}{2}{3} \\
+      \ganttmilestone[name=eswc1]{ESWC}{8} \\
+      \ganttbar[name=fedq]{Federated QSQ}{8}{9} \\
+      \ganttmilestone[name=jrnl]{Journal}{10} \\
+      \ganttbar[name=fedp]{Parallel QSQ}{10}{11} \\
+      \ganttbar[name=svc]{Services}{12}{13} \\
+      \ganttbar[name=qual]{Qualification}{9}{10} \\
+      \ganttbar[name=thesis]{Thesis writing}{14}{16} \\
+      
+      % general deadlines
+      % \ganttmilestone[name=iswc1]{ISWC}{10}  \ganttmilestone[name=iswc2]{}{14} \\
+      % \ganttmilestone[name=eswc2]{ESWC}{12} \\
+      % \ganttmilestone[name=iiwas1]{iiWAS}{7} \ganttmilestone[name=iiwas2]{}{11} \ganttmilestone[name=iiwas3]{}{15} 
+      
+      % links
+      \ganttlink{mat2}{fedq}
+      \ganttlink{fedq}{fedp}
+      \ganttlink{fedq}{svc}
+      \ganttlink{fedq}{jrnl}
+      \ganttlink{fedq}{qual}
+      \ganttlink{mat2}{eswc1}
+      \ganttlink{shacl}{eswc1}
+      \ganttlink{qual}{thesis}
+      \ganttlink{fedp}{thesis}
+      \ganttlink{svc}{thesis}
+      
+    \end{ganttchart}
+  \end{adjustbox}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Finalização
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thanksframe
+\referencesframe{userguide}
+
+\begin{backup}
+  \pholder{Slide de backup}
+\end{backup}
+
+\end{document}
