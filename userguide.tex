@@ -43,9 +43,9 @@
   \begin{itemize}
   \item Esse template funciona como uma classe \LaTeX
     \begin{itemize}
-    \item O .cls é standalone: \textbf{não depende} de arquivos externos
+    \item O .cls é \emph{standalone}: \textbf{não depende} de arquivos externos
     \item Obtenha atualizações no \href{https://github.com/lapesd/lapesd-slides/}{GitHub}
-    \item \href{http://fixme.org/todo}{Template no Overleaf} 
+    \item \href{https://www.overleaf.com/read/zbmmnfkmhdwz}{Template no Overleaf} 
       \begin{itemize}
       \item Cuidado: pode não estar com o último .cls
       \end{itemize}
@@ -258,7 +258,7 @@
   \item Atalho para incluir figuras
     \begin{itemize}
     \item A figura ficará centralizada
-    \item Havera espaçamento de \texttt{.5em} (meia linha) antes e depois
+    \item Haverá espaçamento de \texttt{.5em} (meia linha) antes e depois
     \item Se \texttt{texto} for dado, será renderizado abaixo da figura, centralizado
     \item \texttt{opts\_graphicx} é redirecionado para o \mt|\includegraphics|
     \end{itemize}
@@ -271,8 +271,8 @@
     \mla|\tcitet[]{}|, \mla|\tcitep[]{}|, \mla|\tcite[]{}| e \mla|\tciteonline[]{}|
   \end{center}
   \begin{itemize}
-  \item Equivalentes às suas contrapartes sem o \textbf{\texttt{t}}
-  \item Não são definios se o \mla|\cite| correspondente não existir
+  \item Equivalentes às suas contra-partes sem o \textbf{\texttt{t}}
+  \item Não são definidos se o \mla|\cite| correspondente não existir
   \item Ao usar a opção de classe abntexcite, \mla|\citep| e \mla|\citet| são definidos a partir de \mla|\cite| e \mla|\citeonline|
   \item Ao usar a opção de classe natbib, \mla|\citeonline| é definido a partir de \mla|\citet|
   \end{itemize}
@@ -340,10 +340,11 @@
   \item Crie um grupo no SVG para cada frame
     \begin{itemize}
     \item Garanta que todos os frames (grupos no SVG) tenham \emph{exatamente} as mesmas dimensões
-    \item Todos os frames (grupos) devem estar epilhados no eixo $y$, isto é deve existir uma reta paralela ao eixo $y$ que contenha todos os top-left dos bounding box de todos os grupos
-    \item Não devem haver elementos no SVG fora do bounding box definido pelo top-left de frame com maior valor de $y$ e o bottom-right de frame com o menor valor de $y$   \end{itemize}
+    \item Todos os frames (grupos) devem estar empilhados no eixo $y$, isto é deve existir uma reta paralela ao eixo $y$ que contenha todos os \emph{top-left} dos \emph{bounding box} de todos os grupos
+    \item Não devem haver elementos no SVG fora do \emph{bounding box} definido pelo \emph{top-left} de frame com maior valor de $y$ e o \emph{bottom-right} de frame com o menor valor de $y$   
+    \end{itemize}
   \item Nomeie grupos no XML do SVG
-  \item No Makefile, adicione um \emph{target} e uma entrada na variável \texttt{frames} para cada grupo
+  \item No \texttt{Makefile}, adicione um \emph{target} e uma entrada na variável \texttt{frames} para cada grupo
   \item Use o ambiente \texttt{overlayarea} ou \texttt{overprint} e liste os frames com  \mla|\only<n>{\includegraphics{frame-n.pdf}}|
   \end{enumerate}
 \end{frame}
@@ -409,3 +410,15 @@
 \end{backup}
 
 \end{document}
+
+% LocalWords:  template cls standalone GitHub Overleaf bugfixes SVGs
+% LocalWords:  Re-empacotamento fontsize Makefile pdflatex imgs PDFs
+% LocalWords:  shell-escape frames SVG brazil english lapesd-slides
+% LocalWords:  disabletodonotes todonotes TODO's backup showbackup
+% LocalWords:  hidebackup abntexcite abntex natbib nobib titleframe
+% LocalWords:  frame showsections sidebar stopcountingframes default
+% LocalWords:  thanksframe Thank You Questions referencesframe titulo
+% LocalWords:  bibfiles pholder todonote placeholder inline addfig
+% LocalWords:  opts graphicx addfiglw width Citations dijkstra Direct
+% LocalWords:  Closure Parallel dynamic scheduling DoImportantStuff
+% LocalWords:  lccp merged cell svg pdf
