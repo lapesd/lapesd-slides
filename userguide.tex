@@ -192,7 +192,7 @@
 
 \begin{frame}[fragile]{\texttt{\textbackslash{}stopcountingframes}}
   \begin{center}
-    \mla|stopcountingframes|
+    \mla|\stopcountingframes|
   \end{center}
   \begin{itemize}
   \item A partir desse ponto slides deixam de ser contabilizados
@@ -258,7 +258,7 @@
   \item Atalho para incluir figuras
     \begin{itemize}
     \item A figura ficará centralizada
-    \item Haverá espaçamento de \texttt{.5em} (meia linha) antes e depois
+    \item Haverá espaçamento de \texttt{.25em} ($\frac{1}{4}$ linha) antes e depois
     \item Se \texttt{texto} for dado, será renderizado abaixo da figura, centralizado
     \item \texttt{opts\_graphicx} é redirecionado para o \mt|\includegraphics|
     \end{itemize}
@@ -283,6 +283,14 @@
 
 % Atalho para criar esqueletos dos slides
 \pholder[Slide criado com \mt|\pholder|]{Slide placeholder}
+
+\begin{frame}{Figuras}
+  \addfiglw[Art school building (Chair, 2019)]{\jobname-ufsc.jpg}
+  
+  \begin{itemize}
+  \item Figura inclusa com \mt|\addfiglw|
+  \end{itemize}
+\end{frame}
 
 \begin{frame}{Citations}
   \begin{itemize}

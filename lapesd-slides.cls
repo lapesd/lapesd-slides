@@ -20292,11 +20292,12 @@ RjRFNUIwN0E5RTU4RD5dCj4+CnN0YXJ0eHJlZgo0MjEzMgolJUVPRgo=
 \newcommandtwoopt{\addfig}[3][][]{%
   % #1: texto    #2: opts includegraphics    #3: arquivo
   \begin{center}%
-  \vspace{.5em}%
-  \includegraphics[#2]{#3}%
-  \vspace{.5em}\ifstrempty{#1}{}{#1}%
+  \vspace{.25em}%
+  \includegraphics[#2]{#3} \\%
+  \vspace{.25em}\ifstrempty{#1}{}{#1}%
   \end{center}%
 }
+\newcommand{\addfiglw}[2][]{\addfig[#1][width=\linewidth]{#2}}
 
 % \tcitep[]{}, \tcitet[]{} \ticite[]{}, \tciteonline[]{}
 % 
