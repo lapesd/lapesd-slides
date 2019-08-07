@@ -20041,12 +20041,12 @@ RjRFNUIwN0E5RTU4RD5dCj4+CnN0YXJ0eHJlZgo0MjEzMgolJUVPRgo=
 \end{filecontents*}
 
 % Extrai os .64 para os arquivos de imagem
-\immediate\write18{base64 -d \jobname-LogoLapesd-short.png.64 > \jobname-LogoLapesd-short.png}
-\immediate\write18{base64 -d \jobname-logo-lapesd-fundo-escuro.png.64 > \jobname-logo-lapesd-fundo-escuro.png}
-\immediate\write18{base64 -d \jobname-large-corner.pdf.64 > \jobname-large-corner.pdf}
-\immediate\write18{base64 -d \jobname-small-corner.pdf.64 > \jobname-small-corner.pdf}
-\immediate\write18{base64 -d \jobname-ufsc.jpg.64 > \jobname-ufsc.jpg}
-\immediate\write18{base64 -d \jobname-logo-ufsc.pdf.64 > \jobname-logo-ufsc.pdf}
+\immediate\write18{base64 --decode \jobname-LogoLapesd-short.png.64 > \jobname-LogoLapesd-short.png}
+\immediate\write18{base64 --decode \jobname-logo-lapesd-fundo-escuro.png.64 > \jobname-logo-lapesd-fundo-escuro.png}
+\immediate\write18{base64 --decode \jobname-large-corner.pdf.64 > \jobname-large-corner.pdf}
+\immediate\write18{base64 --decode \jobname-small-corner.pdf.64 > \jobname-small-corner.pdf}
+\immediate\write18{base64 --decode \jobname-ufsc.jpg.64 > \jobname-ufsc.jpg}
+\immediate\write18{base64 --decode \jobname-logo-ufsc.pdf.64 > \jobname-logo-ufsc.pdf}
 
   % Cores
   \definecolor{JLightLightBlue}{RGB}{224,239,255}
