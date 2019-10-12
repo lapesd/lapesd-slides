@@ -35,6 +35,20 @@
 \DeclareOption{showbackup}{\lapesdslides@backuptrue}
 \DeclareOption{hidebackup}{\lapesdslides@backupfalse}
 
+% [nolapesd]
+% 
+% Não mostra logos do Lapesd
+\newif\iflapesdslides@lapesdlogo
+\lapesdslides@lapesdlogotrue
+\DeclareOption{nolapesd}{\lapesdslides@lapesdlogofalse}
+
+% [noartschool]
+% 
+% Não mostra Reitoria na capa
+\newif\iflapesdslides@artschool
+\lapesdslides@artschooltrue
+\DeclareOption{noartschool}{\lapesdslides@artschoolfalse}
+
 % [abntexcite]  (default)
 % [natbib]
 % [nobib]
@@ -20092,7 +20106,9 @@ RjRFNUIwN0E5RTU4RD5dCj4+CnN0YXJ0eHJlZgo0MjEzMgolJUVPRgo=
   \pgfsetinnerlinewidth{0pt}
   \pgfsetcolor{JGray}
   \pgfusepath{stroke}
-  \pgftext[at=\pgfpoint{.075\paperwidth}{-.97\paperheight},center,base]{\pgfuseimage{small-logo}}
+  \iflapesdslides@lapesdlogo
+    \pgftext[at=\pgfpoint{.075\paperwidth}{-.97\paperheight},center,base]{\pgfuseimage{small-logo}}
+  \fi
   \end{pgfpicture}%
   \vskip-25pt%
   }
@@ -20118,10 +20134,14 @@ RjRFNUIwN0E5RTU4RD5dCj4+CnN0YXJ0eHJlZgo0MjEzMgolJUVPRgo=
   \pgftransformyshift{5.5pt}
   \pgfusepath{fill}
   \DoPurpleBackground
-  \pgftext[at=\pgfpoint{.0001\paperwidth}{-.38\paperheight},left,base]{\pgfuseimage{ufsc-reitoria}}
+  \iflapesdslides@artschool
+    \pgftext[at=\pgfpoint{.0001\paperwidth}{-.38\paperheight},left,base]{\pgfuseimage{ufsc-reitoria}}
+  \fi
   
   % Logo
-  \pgftext[at=\pgfpoint{.001\paperwidth}{-.99\paperheight},left,base]{\pgfuseimage{main-logo}}
+  \iflapesdslides@lapesdlogo
+    \pgftext[at=\pgfpoint{.001\paperwidth}{-.99\paperheight},left,base]{\pgfuseimage{main-logo}}
+  \fi
   \pgftext[at=\pgfpoint{.9\paperwidth}{-.98\paperheight},left,base]{\pgfuseimage{ufsc}}
   \end{pgfpicture}%
   }
@@ -20176,7 +20196,6 @@ RjRFNUIwN0E5RTU4RD5dCj4+CnN0YXJ0eHJlZgo0MjEzMgolJUVPRgo=
   \PassOptionsToPackage{alf,abnt-and-type=&,abnt-doi=link,abnt-url-package=url}{abntex2cite}
   \RequirePackage{abntex2cite}
   \AtBeginDocument{
-    \typeout{XOXOTA}
     \providecommand{\citet}[2][]{\citeonline[#1]{#2}}
     \providecommand{\citep}[2][]{\cite[#1]{#2}}
   }
