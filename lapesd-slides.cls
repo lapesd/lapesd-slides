@@ -133,6 +133,8 @@
 % Typeset de highlight (\hl), strikeout (\so), e underline (\ul)
 \RequirePackage{soulutf8}
 
+% backup environment
+\RequirePackage{comment}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% i18n                                                           %%%
@@ -20351,9 +20353,11 @@ RjRFNUIwN0E5RTU4RD5dCj4+CnN0YXJ0eHJlZgo0MjEzMgolJUVPRgo=
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Gera slides de backup de acordo com opção dada para a classe
-\newenvironment{backup}[0]%
-  {\iflapesdslides@backup}%
-  {\fi}
+\iflapesdslides@backup
+  \newenvironment{backup}[0]{}{}
+\else
+  \excludecomment{backup}
+\fi
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
