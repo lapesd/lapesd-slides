@@ -42,6 +42,15 @@
 \lapesdslides@lapesdlogotrue
 \DeclareOption{nolapesd}{\lapesdslides@lapesdlogofalse}
 
+
+% [noglossaries]
+%
+% Não carrega {glossaries}. Use se quiser carregar de modo diferenciado
+\newif\iflapesdslides@glossaries
+\lapesdslides@glossariestrue
+\DeclareOption{nolapesd}{\lapesdslides@glossariesfalse}
+
+
 % [noartschool]
 % 
 % Não mostra Reitoria na capa
@@ -20192,10 +20201,76 @@ RjRFNUIwN0E5RTU4RD5dCj4+CnN0YXJ0eHJlZgo0MjEzMgolJUVPRgo=
 \usefonttheme[onlymath]{serif}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Acronimos -- glossaries                                         %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\iflapesdslides@glossaries
+  \let\su@ExpandTwoArgs\relax
+  \let\IfSubStringInString\relax
+  \let\su@IfSubStringInString\relax
+  \RequirePackage[acronym]{glossaries}
+  
+  % Define a forma como irá acontecer o build dos glossarios. Essa é a forma mais
+  % rústica: exige que as listas sejam mantidas em ordem pelo autor
+  \makenoidxglossaries
+  
+  % Sempre expande se o usuário pedir
+  \renewrobustcmd*{\glsfirst}[2][]{\glsreset{#2}\gls[#1]{#2}}
+  \renewrobustcmd*{\Glsfirst}[2][]{\glsreset{#2}\Gls[#1]{#2}}
+  \renewrobustcmd*{\GLSfirst}[2][]{\glsreset{#2}\GLS[#1]{#2}}
+  \renewrobustcmd*{\glsfirstplural}[2][]{\glsreset{#2}\glspl[#1]{#2}}
+  \renewrobustcmd*{\Glsfirstplural}[2][]{\glsreset{#2}\Glspl[#1]{#2}}
+  \renewrobustcmd*{\GLSfirstplural}[2][]{\glsreset{#2}\GLSpl[#1]{#2}}
+  
+  % Comandos para criação de acronimos
+  
+  % \xnreacronym[kv_opts]{SIGLA}{expansão} 
+  % 
+  % registra um novo acronimo. Se o argumento opcional for omitido, a própria
+  % SIGLA é usada na exibição. As opções permitidas no kv_opts são detalhadas na
+  % seção 4 do manual do glossaries.
+  % 
+  % Serão também gerados comandos \SIGLA e \SIGLAs (que expando o acronimo no
+  % plural). Para customizar a expansão no plural, use a opção longplural. Ex:
+  % longplural={Square Matrices}
+  \newcommandtwoopt{\xnewacronym}[4][][]{%
+    % #1: CMD para gerar \CMD, tipicamente CMD=SIGLA
+    % #2: opções chave-valor repassadas para o \newacronym
+    % #3: SIGLA, como deve aparecer no texto
+    % #4: expansão
+    \newacronym[#2]{#3}{#3}{#4}%
+    \ifstrempty{#1}{%
+      \@namedef{#3}{\gls{#3}\xspace}%
+      \@namedef{#3s}{\glspl{#3}\xspace}%
+    }{%
+      \@namedef{#1}{\gls{#3}\xspace}%
+      \@namedef{#1s}{\glspl{#3}\xspace}%
+    }
+  }
+  % \tnewacronym[kv_opts]{SIGLA}{expansão}
+  % 
+  % Cria um acronimo que pode ser usado com o comando \SIGLA, mas que nunca será
+  % expandido. Ainda assim ele irá aparecer na lista de siglas. Casos de uso para
+  % essa macro são acrônimos triviais, como API e HTTP que iriam expandir
+  % loucamente na introdução. Use com parcimônia
+  \newcommand{\tnewacronym}[3][]{%
+    \newacronym[#1]{#2}{#2}{#3}%
+    \@namedef{#2}{\glstext{#2}\xspace}%
+    \@namedef{#2s}{\glstext{#2}s\xspace}%
+  }
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Bibliografia                                                   %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \iflapesdslides@abntexcite
+  % Esse RequirePackage deve acontecer **antes** do abntex2/abntex2cite,
+  % pois o abntex2 definirá alguns comandos de substr caso eles já não
+  % estejam definidos. O efeito colateral é que alguns alunos incluirão
+  % pacotes (como o glossaries) que indiretamente incluirão substr, que
+  % então causará um erro de símbolos já definidos.
+  \RequirePackage{substr}
   \PassOptionsToPackage{alf,abnt-and-type=&,abnt-doi=link,abnt-url-package=url}{abntex2cite}
   \RequirePackage{abntex2cite}
   \AtBeginDocument{

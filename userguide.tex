@@ -103,6 +103,7 @@
   \item \mla[fontsize=\tiny]|\usepackage{todonotes}|
   \item \mla[fontsize=\tiny]|\usepackage{soulutf8}|
   \item \mla[fontsize=\tiny]|\usepackage{babel}|
+  \item \mla[fontsize=\tiny]|\usepackage[acronym]{glossaries}| + \mla[fontsize=\tiny]|\xnewacronym| + \mla[fontsize=\tiny]|\tnewacronym|
   \item \mla[fontsize=\tiny]|\usepackage{abntex2cite}| ou \mla[fontsize=\tiny]|\usepackage{natbib}| ou nenhum
   \item \mla[fontsize=\tiny]|\usepackage{pifont}|
   \item \mla[fontsize=\tiny]|\usepackage{minted}|
@@ -141,6 +142,15 @@
   \item A opção \texttt{nolapesd} Remove os logos do Lapesd da capa e do sidebar
   \end{itemize}
 \end{frame}
+
+\begin{frame}{Acrônimos}
+  \begin{itemize}
+  \item Comandos \mla|\xnewacronym| e \mla|\tnewacronym| do \texttt{lapesd-thesis}
+  \item A opção \texttt{noglossaries} desativa esses comandos e evita 
+        o \mla|\RequirePackage[acronym]{glossaries}|
+  \end{itemize}
+\end{frame}
+
 
 \begin{frame}{\texttt{disabletodonotes}}
   \begin{itemize}
