@@ -1,5 +1,5 @@
 % Ao menos uma linguagem (brazil ou english) deveria sempre ser fornecida
-\documentclass[brazil]{lapesd-slides}
+\documentclass[brazil,aspectratio=169]{lapesd-slides}
 
 \usepackage{pgfgantt}
 
@@ -140,6 +140,12 @@
   \begin{itemize}
   \item A opção \texttt{noartschoool} Remove a foto da reitoria da capa
   \item A opção \texttt{nolapesd} Remove os logos do Lapesd da capa e do sidebar
+  \item O aspect ratio é controlado com as opções do \texttt{beamer}:
+    \begin{itemize}
+    \item \texttt{aspectration=43} frame de 40mm x 30mm (o padrão do \texttt{beamer})
+    \item \texttt{aspectration=169} frame de 160mm x 90mm
+    \item O slide de título pode ter problemas com outros aspect ratios.
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -200,6 +206,7 @@
 \begin{frame}[fragile]{\texttt{\textbackslash{}showsections}}
   \begin{center}
     \mla|\showsections|
+    \mla|\hidesections|
   \end{center}
   \begin{itemize}
   \item Passa a gerar slides de ``pausa'' a cada \mla|\section|
@@ -375,6 +382,7 @@
 \end{frame}
 
 \begin{frame}{pgfgantt}
+  \centering
   \begin{adjustbox}{max height=.9\textheight,max width=\linewidth}
     \begin{ganttchart}[vgrid,
       y unit chart=.6cm,

@@ -79,6 +79,23 @@
 \DeclareOption{natbib}{\lapesdslides@abntexcitefalse\lapesdslides@natbibtrue}
 \DeclareOption{nobib}{\lapesdslides@abntexcitefalse}
 
+% [aspectratio=43]  (default)
+% [aspectratio=169] 
+% ...               (outros valores aceitos pelo beamer)
+%
+% Altera o aspect ratio do default (4:3) para 16:9. Outros valores são
+% redirecionados para o beamer, mas a página de título continua sendo desenhada
+% em 4:3, o que pode causar resultados estranhos. Arrume essa classe se outros
+% ratios forem importantes.
+\newif\iflapesdslides@wide
+\DeclareOption{aspectratio=169}{%
+  \PassOptionsToClass{aspectratio=169}{beamer}%
+  \lapesdslides@widetrue
+}
+
+% Redireciona quaisquer outras opções para o beamer
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{beamer}}
+
 % Faz a mágica acontecer
 \ProcessOptions\relax
 
@@ -86,7 +103,7 @@
 \RequirePackage[utf8]{inputenc}
 
 % Carrega o beamer
-\LoadClass[]{beamer}
+\LoadClass{beamer}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Configurações/pacotes/macros básicos ou triviais               %%%
@@ -20308,7 +20325,11 @@ RjRFNUIwN0E5RTU4RD5dCj4+CnN0YXJ0eHJlZgo0MjEzMgolJUVPRgo=
   \pgfdeclareimage[width=.23\paperwidth]{main-logo}{\jobname-logo-lapesd-fundo-escuro.png}
   \pgfdeclareimage[width=.33\paperwidth]{large-corner}{\jobname-large-corner.pdf}
   \pgfdeclareimage[height=\beamer@headheight]{small-corner}{\jobname-small-corner.pdf}
-  \pgfdeclareimage[width=\paperwidth]{ufsc-reitoria}{\jobname-ufsc.jpg}
+  \iflapesdslides@wide
+    \pgfdeclareimage[width=1.3333\paperwidth]{ufsc-reitoria}{\jobname-ufsc.jpg}
+  \else
+    \pgfdeclareimage[width=\paperwidth]{ufsc-reitoria}{\jobname-ufsc.jpg}
+  \fi
   \pgfdeclareimage[width=.075\paperwidth]{ufsc}{\jobname-logo-ufsc.pdf}
   \setbeamertemplate{sidebar left}{%
   \vskip7pt
@@ -20346,36 +20367,44 @@ RjRFNUIwN0E5RTU4RD5dCj4+CnN0YXJ0eHJlZgo0MjEzMgolJUVPRgo=
   }
   
   \addtobeamertemplate{title page}{%
-  \usebeamertemplate{title background}%
-  \vskip .10\paperheight%
+    \usebeamertemplate{title background}%
+    \vskip .10\paperheight%
   }
   
   \newcommand\DoPurpleBackground{%
-  \pgfpathmoveto{\pgfpointorigin}
-  \pgfpathrectanglecorners{\pgfpoint{0pt}{0pt}}{\pgfpoint{\paperwidth}{-\paperheight}}
-  \pgfsetfillcolor{JBlue}
-  \pgfusepath{fill}
+    \pgfpathmoveto{\pgfpointorigin}
+    \iflapesdslides@wide
+      \pgfpathrectanglecorners{\pgfpoint{0pt}{0pt}}{\pgfpoint{1.3333\paperwidth}{-\paperheight}}
+    \else
+      \pgfpathrectanglecorners{\pgfpoint{0pt}{0pt}}{\pgfpoint{\paperwidth}{-\paperheight}}
+    \fi
+    \pgfsetfillcolor{JBlue}
+    \pgfusepath{fill}
   }
   
   
   \setbeamertemplate{title background}{%
-  \begin{pgfpicture}
-  \pgf@relevantforpicturesizefalse
-  %\pgftransformxshift{\Gm@lmargin}
-  \pgftransformxshift{-41.5pt}
-  \pgftransformyshift{5.5pt}
-  \pgfusepath{fill}
-  \DoPurpleBackground
-  \iflapesdslides@artschool
-    \pgftext[at=\pgfpoint{.0001\paperwidth}{-.38\paperheight},left,base]{\pgfuseimage{ufsc-reitoria}}
-  \fi
-  
-  % Logo
-  \iflapesdslides@lapesdlogo
-    \pgftext[at=\pgfpoint{.001\paperwidth}{-.99\paperheight},left,base]{\pgfuseimage{main-logo}}
-  \fi
-  \pgftext[at=\pgfpoint{.9\paperwidth}{-.98\paperheight},left,base]{\pgfuseimage{ufsc}}
-  \end{pgfpicture}%
+    \begin{pgfpicture}
+      \pgf@relevantforpicturesizefalse
+      % \pgftransformxshift{\Gm@lmargin}
+      \iflapesdslides@wide
+        \pgftransformxshift{-55.33pt}
+      \else
+        \pgftransformxshift{-41.50pt}
+      \fi
+      \pgftransformyshift{5.5pt}
+      \pgfusepath{fill}
+      \DoPurpleBackground
+      \iflapesdslides@artschool
+        \pgftext[at=\pgfpoint{.0001\paperwidth}{-.38\paperheight},left,base]{\pgfuseimage{ufsc-reitoria}}
+      \fi
+      
+      % Logo
+      \iflapesdslides@lapesdlogo
+      \pgftext[at=\pgfpoint{.001\paperwidth}{-.99\paperheight},left,base]{\pgfuseimage{main-logo}}
+      \fi
+      \pgftext[at=\pgfpoint{.9\paperwidth}{-.98\paperheight},left,base]{\pgfuseimage{ufsc}}
+    \end{pgfpicture}%
   }
   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -20524,10 +20553,16 @@ RjRFNUIwN0E5RTU4RD5dCj4+CnN0YXJ0eHJlZgo0MjEzMgolJUVPRgo=
 
 % \showsections
 %
-% From the momoent this macro is issued onwards, section frames will be
+% From the moment this macro is issued onwards, section frames will be
 % automatically displayed for every \section{}
 \newif\iflapesdslides@showsection
 \newcommand{\showsections}[0]{\lapesdslides@showsectiontrue}
+
+% \hidesections
+%
+% From the momoent this macro is issued onwards, section frames will NOT be
+% automatically displayed for every \section{}
+\newcommand{\hidesections}[0]{\lapesdslides@showsectionfalse}
 
 \AtBeginSection{
   \iflapesdslides@showsection
