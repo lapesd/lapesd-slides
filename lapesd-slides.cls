@@ -20439,16 +20439,18 @@ RjRFNUIwN0E5RTU4RD5dCj4+CnN0YXJ0eHJlZgo0MjEzMgolJUVPRgo=
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \setbeamertemplate{caption}[numbered]
   
-% Re-ativa footnotes
-\RequirePackage{hanging}
-\setbeamertemplate{footnote}{%
-  \hangpara{2em}{1}%
-  \makebox[2em][l]{\insertfootnotemark}\footnotesize\insertfootnotetext\par%
-}
-
-% Math com fonte serifada (lmodern)
-\RequirePackage{lmodern} % fonte bonita (usada em ambiente math)
-\usefonttheme[onlymath]{serif}
+  % Re-ativa footnotes
+  \RequirePackage{hanging}
+  \setbeamertemplate{footnote}{%
+    \hangpara{2em}{1}%
+    \makebox[.9em][r]{\insertfootnotemark\hspace{.2em}}\footnotesize\insertfootnotetext\par%
+  }
+  \let\lapesdthesis@footnote\footnote
+  \renewcommand{\footnote}[2][frame]{\lapesdthesis@footnote[#1]{#2}}
+  
+  % Math com fonte serifada (lmodern)
+  \RequirePackage{lmodern} % fonte bonita (usada em ambiente math)
+  \usefonttheme[onlymath]{serif}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Acronimos -- glossaries                                         %%%
