@@ -146,8 +146,10 @@
 \RequirePackage{hyperref}
 \hypersetup{colorlinks=true,linkcolor=JBlue,citecolor=JBlue}
 % Remove <>'s em \urls
-\let\UrlLeft\relax
-\let\UrlRight\relax
+\AtBeginDocument{%
+  \let\UrlLeft\relax%
+  \let\UrlRight\relax%
+}
 
 % Pseudo código
 \RequirePackage{algorithmicx}
