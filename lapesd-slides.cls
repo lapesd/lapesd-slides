@@ -20442,6 +20442,7 @@ RjRFNUIwN0E5RTU4RD5dCj4+CnN0YXJ0eHJlZgo0MjEzMgolJUVPRgo=
 \setbeamertemplate{caption}[numbered]
 
 % Re-ativa footnotes
+\PassOptionsToPackage{notquote}{hanging}
 \RequirePackage{hanging}
 \setbeamertemplate{footnote}{%
   \hangpara{2em}{1}%
