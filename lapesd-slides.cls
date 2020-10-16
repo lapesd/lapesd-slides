@@ -20313,146 +20313,146 @@ RjRFNUIwN0E5RTU4RD5dCj4+CnN0YXJ0eHJlZgo0MjEzMgolJUVPRgo=
 \immediate\write18{base64 --decode \jobname-ufsc.jpg.64 > \jobname-ufsc.jpg}
 \immediate\write18{base64 --decode \jobname-logo-ufsc.pdf.64 > \jobname-logo-ufsc.pdf}
 
-  % Cores
-  \definecolor{JLightLightBlue}{RGB}{224,239,255}
-  \definecolor{JDarkGray}{RGB}{96,96,96}
-  \definecolor{JLightGray}{RGB}{225,225,225}
-  \definecolor{JGray}{RGB}{168,168,168}
-  \definecolor{JLightBlue}{RGB}{124,145,198}
-  \definecolor{JBlue}{RGB}{33,69,143}
-  
-  \useoutertheme[width=.15\paperwidth]{sidebar}
-  \setlength{\beamer@headheight}{.165\paperheight}
-  \pgfdeclareimage[width=.13\paperwidth]{small-logo}{\jobname-LogoLapesd-short.png}
-  \pgfdeclareimage[width=.23\paperwidth]{main-logo}{\jobname-logo-lapesd-fundo-escuro.png}
-  \pgfdeclareimage[width=.33\paperwidth]{large-corner}{\jobname-large-corner.pdf}
-  \pgfdeclareimage[height=\beamer@headheight]{small-corner}{\jobname-small-corner.pdf}
-  \iflapesdslides@wide
-    \pgfdeclareimage[width=1.3333\paperwidth]{ufsc-reitoria}{\jobname-ufsc.jpg}
-  \else
-    \pgfdeclareimage[width=\paperwidth]{ufsc-reitoria}{\jobname-ufsc.jpg}
-  \fi
-  \pgfdeclareimage[width=.075\paperwidth]{ufsc}{\jobname-logo-ufsc.pdf}
-  \setbeamertemplate{sidebar left}{%
+% Cores
+\definecolor{JLightLightBlue}{RGB}{224,239,255}
+\definecolor{JDarkGray}{RGB}{96,96,96}
+\definecolor{JLightGray}{RGB}{225,225,225}
+\definecolor{JGray}{RGB}{168,168,168}
+\definecolor{JLightBlue}{RGB}{124,145,198}
+\definecolor{JBlue}{RGB}{33,69,143}
+
+\useoutertheme[width=.15\paperwidth]{sidebar}
+\setlength{\beamer@headheight}{.165\paperheight}
+\pgfdeclareimage[width=.13\paperwidth]{small-logo}{\jobname-LogoLapesd-short.png}
+\pgfdeclareimage[width=.23\paperwidth]{main-logo}{\jobname-logo-lapesd-fundo-escuro.png}
+\pgfdeclareimage[width=.33\paperwidth]{large-corner}{\jobname-large-corner.pdf}
+\pgfdeclareimage[height=\beamer@headheight]{small-corner}{\jobname-small-corner.pdf}
+\iflapesdslides@wide
+\pgfdeclareimage[width=1.3333\paperwidth]{ufsc-reitoria}{\jobname-ufsc.jpg}
+\else
+\pgfdeclareimage[width=\paperwidth]{ufsc-reitoria}{\jobname-ufsc.jpg}
+\fi
+\pgfdeclareimage[width=.075\paperwidth]{ufsc}{\jobname-logo-ufsc.pdf}
+\setbeamertemplate{sidebar left}{%
   \vskip7pt
   \insertverticalnavigation{\beamer@sidebarwidth}%
-  }
+}
   
-  \setbeamertemplate{footline}[text line]{%
+\setbeamertemplate{footline}[text line]{%
   \insertshortauthor\strut\hfill\insertshorttitle\hfill\insertshortdate\hspace{1em}\insertframenumber/\inserttotalframenumber}
-  %\strut\insertshortdate\hfill\insertshorttitle\hfill\insertframenumber/\inserttotalframenumber}
-  
-  \addtobeamertemplate{frametitle}{}{%
+% \strut\insertshortdate\hfill\insertshorttitle\hfill\insertframenumber/\inserttotalframenumber}
+
+\addtobeamertemplate{frametitle}{}{%
   \begin{pgfpicture}
-  \pgf@relevantforpicturesizefalse
-  \pgftransformxshift{-\Gm@lmargin}
-  \pgftransformyshift{\beamer@headheight+18pt}
-  \pgftext[at=\pgfpoint{\paperwidth}{-\beamer@headheight},right,base]{\pgfuseimage{small-corner}}
-  \pgfpathmoveto{\pgfpoint{.15\paperwidth}{0pt}}
-  \pgfpathlineto{\pgfpoint{.15\paperwidth}{-\beamer@headheight}}
-  \pgfsetlinewidth{3.5pt}
-  \pgfsetinnerlinewidth{1pt}
-  \pgfsetinnerstrokecolor{JGray}
-  \pgfsetcolor{white}
-  \pgfusepath{stroke}
-  \pgfpathmoveto{\pgfpoint{.15\paperwidth}{-.23\paperheight}}
-  \pgfpathlineto{\pgfpoint{.15\paperwidth}{-.97\paperheight}}
-  \pgfsetlinewidth{1pt}
-  \pgfsetinnerlinewidth{0pt}
-  \pgfsetcolor{JGray}
-  \pgfusepath{stroke}
-  \iflapesdslides@lapesdlogo
+    \pgf@relevantforpicturesizefalse
+    \pgftransformxshift{-\Gm@lmargin}
+    \pgftransformyshift{\beamer@headheight+18pt}
+    \pgftext[at=\pgfpoint{\paperwidth}{-\beamer@headheight},right,base]{\pgfuseimage{small-corner}}
+    \pgfpathmoveto{\pgfpoint{.15\paperwidth}{0pt}}
+    \pgfpathlineto{\pgfpoint{.15\paperwidth}{-\beamer@headheight}}
+    \pgfsetlinewidth{3.5pt}
+    \pgfsetinnerlinewidth{1pt}
+    \pgfsetinnerstrokecolor{JGray}
+    \pgfsetcolor{white}
+    \pgfusepath{stroke}
+    \pgfpathmoveto{\pgfpoint{.15\paperwidth}{-.23\paperheight}}
+    \pgfpathlineto{\pgfpoint{.15\paperwidth}{-.97\paperheight}}
+    \pgfsetlinewidth{1pt}
+    \pgfsetinnerlinewidth{0pt}
+    \pgfsetcolor{JGray}
+    \pgfusepath{stroke}
+    \iflapesdslides@lapesdlogo
     \pgftext[at=\pgfpoint{.075\paperwidth}{-.97\paperheight},center,base]{\pgfuseimage{small-logo}}
-  \fi
+    \fi
   \end{pgfpicture}%
   \vskip-25pt%
-  }
-  
-  \addtobeamertemplate{title page}{%
-    \usebeamertemplate{title background}%
-    \vskip .10\paperheight%
-  }
-  
-  \newcommand\DoPurpleBackground{%
-    \pgfpathmoveto{\pgfpointorigin}
+}
+
+\addtobeamertemplate{title page}{%
+  \usebeamertemplate{title background}%
+  \vskip .10\paperheight%
+}
+
+\newcommand\DoPurpleBackground{%
+  \pgfpathmoveto{\pgfpointorigin}
+  \iflapesdslides@wide
+  \pgfpathrectanglecorners{\pgfpoint{0pt}{0pt}}{\pgfpoint{1.3333\paperwidth}{-\paperheight}}
+  \else
+  \pgfpathrectanglecorners{\pgfpoint{0pt}{0pt}}{\pgfpoint{\paperwidth}{-\paperheight}}
+  \fi
+  \pgfsetfillcolor{JBlue}
+  \pgfusepath{fill}
+}
+
+
+\setbeamertemplate{title background}{%
+  \begin{pgfpicture}
+    \pgf@relevantforpicturesizefalse
+    % \pgftransformxshift{\Gm@lmargin}
     \iflapesdslides@wide
-      \pgfpathrectanglecorners{\pgfpoint{0pt}{0pt}}{\pgfpoint{1.3333\paperwidth}{-\paperheight}}
+    \pgftransformxshift{-55.33pt}
     \else
-      \pgfpathrectanglecorners{\pgfpoint{0pt}{0pt}}{\pgfpoint{\paperwidth}{-\paperheight}}
+    \pgftransformxshift{-41.50pt}
     \fi
-    \pgfsetfillcolor{JBlue}
+    \pgftransformyshift{5.5pt}
     \pgfusepath{fill}
-  }
-  
-  
-  \setbeamertemplate{title background}{%
-    \begin{pgfpicture}
-      \pgf@relevantforpicturesizefalse
-      % \pgftransformxshift{\Gm@lmargin}
-      \iflapesdslides@wide
-        \pgftransformxshift{-55.33pt}
-      \else
-        \pgftransformxshift{-41.50pt}
-      \fi
-      \pgftransformyshift{5.5pt}
-      \pgfusepath{fill}
-      \DoPurpleBackground
-      \iflapesdslides@artschool
-        \pgftext[at=\pgfpoint{.0001\paperwidth}{-.38\paperheight},left,base]{\pgfuseimage{ufsc-reitoria}}
-      \fi
-      
-      % Logo
-      \iflapesdslides@lapesdlogo
-      \pgftext[at=\pgfpoint{.001\paperwidth}{-.99\paperheight},left,base]{\pgfuseimage{main-logo}}
-      \fi
-      \pgftext[at=\pgfpoint{.9\paperwidth}{-.98\paperheight},left,base]{\pgfuseimage{ufsc}}
-    \end{pgfpicture}%
-  }
-  
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % Inner Theme
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \useinnertheme{rectangles}
-  \setbeamertemplate{navigation symbols}{}
-  
-  \setlength{\leftmargini}{.5em}
-  \setlength{\leftmarginii}{1.0em}
-  \setlength{\leftmarginiii}{1.5em}
-  \setlength{\leftmarginiv}{2.0em}
-  \setlength{\leftmarginv}{2.5em}
-  \setlength{\leftmarginvi}{3.0em}
-  
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % Apply colors
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \usecolortheme[named=JBlue]{structure}
-  \usecolortheme{rose}
-  \setbeamercolor{title}{fg=JBlue,bg=JLightGray,use=structure}
-  \setbeamercolor{title page}{fg=white}
-  \setbeamercolor{logo}{bg=JGray}
-  \setbeamercolor{frametitle}{fg=JLightGray,bg=JBlue}
-  \setbeamercolor{section in sidebar}{fg=JBlue}
-  \setbeamerfont{section in sidebar}{series=\bfseries}
-  \setbeamercolor{block title}{bg=JBlue!28!white,fg=JBlue}
-  \setbeamercolor{block body}{bg=JBlue!15!white}
-  
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % Misc
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \setbeamertemplate{caption}[numbered]
-  
-  % Re-ativa footnotes
-  \RequirePackage{hanging}
-  \setbeamertemplate{footnote}{%
-    \hangpara{2em}{1}%
-    \makebox[.9em][r]{\insertfootnotemark\hspace{.2em}}\footnotesize\insertfootnotetext\par%
-  }
-  \let\lapesdthesis@footnote\footnote
-  \renewcommand{\footnote}[2][frame]{\lapesdthesis@footnote[#1]{#2}}
-  
-  % Math com fonte serifada (lmodern)
-  \RequirePackage{lmodern} % fonte bonita (usada em ambiente math)
-  \usefonttheme[onlymath]{serif}
+    \DoPurpleBackground
+    \iflapesdslides@artschool
+    \pgftext[at=\pgfpoint{.0001\paperwidth}{-.38\paperheight},left,base]{\pgfuseimage{ufsc-reitoria}}
+    \fi
+    
+    % Logo
+    \iflapesdslides@lapesdlogo
+    \pgftext[at=\pgfpoint{.001\paperwidth}{-.99\paperheight},left,base]{\pgfuseimage{main-logo}}
+    \fi
+    \pgftext[at=\pgfpoint{.9\paperwidth}{-.98\paperheight},left,base]{\pgfuseimage{ufsc}}
+  \end{pgfpicture}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% Inner Theme
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\useinnertheme{rectangles}
+\setbeamertemplate{navigation symbols}{}
+
+\setlength{\leftmargini}{.5em}
+\setlength{\leftmarginii}{1.0em}
+\setlength{\leftmarginiii}{1.5em}
+\setlength{\leftmarginiv}{2.0em}
+\setlength{\leftmarginv}{2.5em}
+\setlength{\leftmarginvi}{3.0em}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% Apply colors
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\usecolortheme[named=JBlue]{structure}
+\usecolortheme{rose}
+\setbeamercolor{title}{fg=JBlue,bg=JLightGray,use=structure}
+\setbeamercolor{title page}{fg=white}
+\setbeamercolor{logo}{bg=JGray}
+\setbeamercolor{frametitle}{fg=JLightGray,bg=JBlue}
+\setbeamercolor{section in sidebar}{fg=JBlue}
+\setbeamerfont{section in sidebar}{series=\bfseries}
+\setbeamercolor{block title}{bg=JBlue!28!white,fg=JBlue}
+\setbeamercolor{block body}{bg=JBlue!15!white}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% Misc
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\setbeamertemplate{caption}[numbered]
+
+% Re-ativa footnotes
+\RequirePackage{hanging}
+\setbeamertemplate{footnote}{%
+  \hangpara{2em}{1}%
+  \makebox[.9em][r]{\insertfootnotemark\hspace{.2em}}\footnotesize\insertfootnotetext\par%
+}
+\let\lapesdthesis@footnote\footnote
+\renewcommand{\footnote}[2][frame]{\lapesdthesis@footnote[#1]{#2}}
+
+% Math com fonte serifada (lmodern)
+\RequirePackage{lmodern} % fonte bonita (usada em ambiente math)
+\usefonttheme[onlymath]{serif}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Acronimos -- glossaries                                         %%%
