@@ -20454,6 +20454,11 @@ RjRFNUIwN0E5RTU4RD5dCj4+CnN0YXJ0eHJlZgo0MjEzMgolJUVPRgo=
 \RequirePackage{lmodern} % fonte bonita (usada em ambiente math)
 \usefonttheme[onlymath]{serif}
 
+% Fix enumerate squares crossing left margin of (alert)block
+\addtobeamertemplate{block begin}{%
+  \setlength{\leftmargini}{1em}
+}{}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Acronimos -- glossaries                                         %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
