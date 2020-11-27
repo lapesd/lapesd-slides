@@ -183,7 +183,20 @@
   {\extrasenglish}%
   {\extrasbrazil}%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Tema beamer                                                    %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+% Detecta windows e determina comando usado para base64 --decode, a menos que já
+% tenha sido definido
+\RequirePackage{ifplatform}
+\ifwindows
+  \providecommand{\lapesdslides@decodecmd}{certutil --decode }
+\else
+  \providecommand{\lapesdslides@decodecmd}{base64 --decode }
+\fi
 
+  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Tema beamer                                                    %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -20306,12 +20319,12 @@ RjRFNUIwN0E5RTU4RD5dCj4+CnN0YXJ0eHJlZgo0MjEzMgolJUVPRgo=
 \end{filecontents*}
 
 % Extrai os .64 para os arquivos de imagem
-\immediate\write18{base64 --decode \jobname-LogoLapesd-short.png.64 > \jobname-LogoLapesd-short.png}
-\immediate\write18{base64 --decode \jobname-logo-lapesd-fundo-escuro.png.64 > \jobname-logo-lapesd-fundo-escuro.png}
-\immediate\write18{base64 --decode \jobname-large-corner.pdf.64 > \jobname-large-corner.pdf}
-\immediate\write18{base64 --decode \jobname-small-corner.pdf.64 > \jobname-small-corner.pdf}
-\immediate\write18{base64 --decode \jobname-ufsc.jpg.64 > \jobname-ufsc.jpg}
-\immediate\write18{base64 --decode \jobname-logo-ufsc.pdf.64 > \jobname-logo-ufsc.pdf}
+\immediate\write18{\lapesdslides@decodecmd \jobname-LogoLapesd-short.png.64 > \jobname-LogoLapesd-short.png}
+\immediate\write18{\lapesdslides@decodecmd \jobname-logo-lapesd-fundo-escuro.png.64 > \jobname-logo-lapesd-fundo-escuro.png}
+\immediate\write18{\lapesdslides@decodecmd \jobname-large-corner.pdf.64 > \jobname-large-corner.pdf}
+\immediate\write18{\lapesdslides@decodecmd \jobname-small-corner.pdf.64 > \jobname-small-corner.pdf}
+\immediate\write18{\lapesdslides@decodecmd \jobname-ufsc.jpg.64 > \jobname-ufsc.jpg}
+\immediate\write18{\lapesdslides@decodecmd \jobname-logo-ufsc.pdf.64 > \jobname-logo-ufsc.pdf}
 
 % Cores
 \definecolor{JLightLightBlue}{RGB}{224,239,255}
