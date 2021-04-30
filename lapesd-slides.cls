@@ -10,6 +10,24 @@
 \ProvidesClass{lapesd-slides}[2019/08/05 v1.0snapshot lapesd-slides]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Suppressão de warnings                                         %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                     Judge not, that ye be not judged
+\RequirePackage{silence}
+% Warning every time \jobname.64 is extractted
+\WarningFilter{latex}{Writing file}
+% Causado pelo pacote algorithmicx, inofensivo visualmente
+\WarningFilter{latexfont}{Font shape `T1/lmss/m/sc'}
+% \\ dentro de \title/\author é comum e causa isso
+\WarningFilter{hyperref}{Token not allowed}
+% Usar todonotes sem [inline] não faz sentido em slides
+\WarningFilter{todonotes}{The length marginparwidth}
+% glossaries está incluso para cópia de acronimos da dissertação/tese, mas
+% realmente não se gera glossario em slides.
+\WarningFilter{glossaries}{No \printnoidxglossary}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %%% Opções                                                         %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -206,6 +224,9 @@
 % Infelizmente isso precisa ser feito aqui, pois a definição do 
 % tema tenta ler as figuras extraídas 
 
+\newif\iflapesdslides@hasshortpng
+\IfFileExists{\jobname-LogoLapesd-short.png.64}{\lapesdslides@hasshortpngtrue}{}
+\iflapesdslides@hasshortpng\else
 \begin{filecontents*}{\jobname-LogoLapesd-short.png.64}
 iVBORw0KGgoAAAANSUhEUgAAAdwAAAEACAYAAAAZX8ehAAAS7XpUWHRSYXcgcHJvZmlsZSB0eXBl
 IGV4aWYAAHjazZpZliM3DkX/uYpeAgkSHJZDguQ5vYNefl+ElFmVNbTtY390qjIla4hgAA9voBzO
@@ -545,7 +566,11 @@ ERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERER
 ERERERERERERERERERERERERERERERERERERERERERERERFpFP8fOcK2mOCZmYMAAAAASUVORK5C
 YII=
 \end{filecontents*}
+\fi % \iflapesdslides@hasshortpng
 
+\newif\iflapesdslides@hasfundoescuropng
+\IfFileExists{\jobname-logo-lapesd-fundo-escuro.png.64}{\lapesdslides@hasfundoescuropngtrue}{}
+\iflapesdslides@hasfundoescuropng\else
 \begin{filecontents*}{\jobname-logo-lapesd-fundo-escuro.png.64}
 iVBORw0KGgoAAAANSUhEUgAABIMAAAGFCAYAAABuajNNAAAUXHpUWHRSYXcgcHJvZmlsZSB0eXBl
 IGV4aWYAAHjapZppdhw5koT/4xRzBGyO5ThY35sb9PHnMzAllTSqLvVrpshMBiMjALi5LUi586//
@@ -1140,7 +1165,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAADTwP8HpHW3ASRLD4wAAAAASUVORK5CYII=
 \end{filecontents*}
+\fi % \iflapesdslides@hasfundoescuropng
 
+\newif\iflapesdslides@largecornerpdf
+\IfFileExists{\jobname-large-corner.pdf.64}{\lapesdslides@largecornerpdftrue}{}
+\iflapesdslides@largecornerpdf\else
 \begin{filecontents*}{\jobname-large-corner.pdf.64}
 JVBERi0xLjQKJcfsj6IKNSAwIG9iago8PC9MZW5ndGggNiAwIFIvRmlsdGVyIC9GbGF0ZURlY29k
 ZT4+CnN0cmVhbQp4nI2TUQ6DIAyG3zkFJ+gEy5BjbFdYMnnQh2X3T6abDEorIT78SfVL29+/Lz2A
@@ -1198,7 +1227,11 @@ MCBSIC9JbmZvIDIgMCBSCi9JRCBbPDE0QjAwOTQ3RjA1RUEzQTQ2OEMwOTlCMEMwQkUyQUU3Pjwx
 NEIwMDk0N0YwNUVBM0E0NjhDMDk5QjBDMEJFMkFFNz5dCj4+CnN0YXJ0eHJlZgoyNjQ2CiUlRU9G
 Cg==
 \end{filecontents*}
+\fi % \iflapesdslides@largecornerpdf
 
+\newif\iflapesdslides@smallcornerpdf
+\IfFileExists{\jobname-small-corner.pdf.64}{\lapesdslides@smallcornerpdftrue}{}
+\iflapesdslides@smallcornerpdf\else
 \begin{filecontents*}{\jobname-small-corner.pdf.64}
 JVBERi0xLjQKJcfsj6IKNSAwIG9iago8PC9MZW5ndGggNiAwIFIvRmlsdGVyIC9GbGF0ZURlY29k
 ZT4+CnN0cmVhbQp4nI2SSw6DMAxE9z5FTuDGwTTkGO0VKhUWsKh6f6mkYJl8iFAWIzl5mnHsj7FI
@@ -1254,7 +1287,11 @@ cmFpbGVyCjw8IC9TaXplIDE0IC9Sb290IDEgMCBSIC9JbmZvIDIgMCBSCi9JRCBbPDlEN0ZGQTg4
 OUY0N0M5MzYxNDhCMjUyQjgzQkI3QjM0Pjw5RDdGRkE4ODlGNDdDOTM2MTQ4QjI1MkI4M0JCN0Iz
 ND5dCj4+CnN0YXJ0eHJlZgoyNTU5CiUlRU9GCg==
 \end{filecontents*}
+\fi % \iflapesdslides@smallcornerpdf
 
+\newif\iflapesdslides@ufscjpg
+\IfFileExists{\jobname-ufsc.jpg.64}{\lapesdslides@ufscjpgtrue}{}
+\iflapesdslides@ufscjpg\else
 \begin{filecontents*}{\jobname-ufsc.jpg.64}
 /9j/4AAQSkZJRgABAQEASABIAAD//gATQ3JlYXRlZCB3aXRoIEdJTVD/2wBDAAEBAQEBAQEBAQEB
 AQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQH/2wBD
@@ -19568,7 +19605,11 @@ s39VSRpHJWOtyG3Y76HmH71NRAmuuel6anRTNQm1q/YtifGbUQ6UhtYPUfvFQ2ZQIPFuXDG8Kioq
 aGVCx2xkVSXZLkJ6bPhw5b8h1lT/AEuOer/6RX1BpH2oA+fH3jIaCTRRyAKFZQV2F5FdposFQKGO
 9kDkAfYkeAvekjYorSfaxVgZG0GDDfE73x2djY3vue/j/9k=
 \end{filecontents*}
+\fi % \iflapesdslides@ufscjpg
 
+\newif\iflapesdslides@logoufscpdf
+\IfFileExists{\jobname-logo-ufsc.pdf.64}{\lapesdslides@logoufscpdftrue}{}
+\iflapesdslides@logoufscpdf\else
 \begin{filecontents*}{\jobname-logo-ufsc.pdf.64}
 JVBERi0xLjQKJcfsj6IKNSAwIG9iago8PC9MZW5ndGggNiAwIFIvRmlsdGVyIC9GbGF0ZURlY29k
 ZT4+CnN0cmVhbQp4nOy9O44lS7OdqdcoUm4hGf52HwPRCjmEQpMXYB2hu4Hm9GnfWhaxd2YdjUoL
@@ -20317,6 +20358,7 @@ NSAwMDAwMCBuIAp0cmFpbGVyCjw8IC9TaXplIDExIC9Sb290IDEgMCBSIC9JbmZvIDIgMCBSCi9J
 RCBbPDlENEYwMDNFM0Q5MzIxODU5N0NGNEU1QjA3QTlFNThEPjw5RDRGMDAzRTNEOTMyMTg1OTdD
 RjRFNUIwN0E5RTU4RD5dCj4+CnN0YXJ0eHJlZgo0MjEzMgolJUVPRgo=
 \end{filecontents*}
+\fi % \iflapesdslides@logoufscpdf
 
 % Extrai os .64 para os arquivos de imagem
 \immediate\write18{\lapesdslides@decodecmd \jobname-LogoLapesd-short.png.64 > \jobname-LogoLapesd-short.png}
